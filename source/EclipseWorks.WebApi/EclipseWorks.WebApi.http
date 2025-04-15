@@ -1,0 +1,6 @@
+@EclipseWorks.WebApi_HostAddress = http://localhost:5023
+
+GET {{EclipseWorks.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
