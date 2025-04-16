@@ -17,9 +17,10 @@ public class UserRepository : IUserRepository
         _users = _context.Set<User>();
     }
 
-    public IEnumerable<User> GetUsers()
+    public async Task<IEnumerable<User>> GetUsersAsync()
     {
-        return _users
-            .Where(x => x.RemovedAt == null);
+        return await _users
+            .Where(x => x.RemovedAt == null)
+            .ToListAsync();
     }
 }

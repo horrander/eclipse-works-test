@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "custom-build",
+      "command": "dotnet clean ${workspaceFolder}/EclipseWorks.sln; dotnet build ${workspaceFolder}/EclipseWorks.sln",
+      "type": "shell",
+      "args": [],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

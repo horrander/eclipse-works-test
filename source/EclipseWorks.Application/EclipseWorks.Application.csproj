@@ -4,6 +4,19 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <NoWarn>$(NoWarn);IDE0290</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Dtos/Request/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../EclipseWorks.Domain/EclipseWorks.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+  </ItemGroup>
 
 </Project>

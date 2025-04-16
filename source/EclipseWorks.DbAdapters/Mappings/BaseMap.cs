@@ -10,18 +10,23 @@ public abstract class BaseMap<T> where T : BaseModel
     {
         builder.HasKey(x => x.Id);
 
+        builder.Property(x => x.Id)
+            .IsRequired()
+            .HasColumnType("uuid")
+            .HasColumnName("id");
+
         builder.Property(x => x.CreatedAt)
-            .HasColumnType("TIMESTAMP")
+            .HasColumnType("timestamp")
             .HasColumnName("created_at")
             .IsRequired();
 
         builder.Property(x => x.ModifiedAt)
-            .HasColumnType("TIMESTAMP")
+            .HasColumnType("timestamp")
             .HasColumnName("modified_at")
             .IsRequired(false);
 
         builder.Property(x => x.RemovedAt)
-            .HasColumnType("TIMESTAMP")
+            .HasColumnType("timestamp")
             .HasColumnName("removed_at")
             .IsRequired(false);
     }

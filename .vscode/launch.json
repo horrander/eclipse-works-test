@@ -1,0 +1,26 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": ".NET Core Launch (web)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "custom-build",
+      "logging": {
+        "moduleLoad": false
+      },
+      "program": "${workspaceFolder}/source/EclipseWorks.WebApi/bin/Debug/net8.0/EclipseWorks.WebApi.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/source/EclipseWorks.WebApi",
+      "console": "internalConsole",
+      "stopAtEntry": false,
+      "justMyCode": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  ]
+}

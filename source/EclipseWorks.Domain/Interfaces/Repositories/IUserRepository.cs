@@ -9,5 +9,5 @@ public interface IUserRepository
     /// Get all non-removed Users
     /// </summary>
     /// <returns>List of user</returns> 
-    IEnumerable<User> GetUsers();
+    Task<IEnumerable<User>> GetUsersAsync();
 }
