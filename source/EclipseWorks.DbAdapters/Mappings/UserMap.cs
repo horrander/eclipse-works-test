@@ -13,6 +13,7 @@ public class UserMap : BaseMap<User>, IEntityTypeConfiguration<User>
         builder.ToTable("users");
 
         builder.Property(x => x.Email)
+            .HasColumnType("varchar(100)")
             .HasColumnName("email");
     }
 }

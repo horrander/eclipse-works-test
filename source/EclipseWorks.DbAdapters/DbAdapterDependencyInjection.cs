@@ -18,5 +18,7 @@ public static class DbAdapterDependencyInjection
         );
 
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IProjectRepository, ProjectRepository>();
+        services.AddScoped<ITaskItemRepository, TaskItemRepository>();
     }
 }

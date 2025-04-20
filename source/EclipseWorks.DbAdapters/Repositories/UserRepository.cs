@@ -17,6 +17,11 @@ public class UserRepository : IUserRepository
         _users = _context.Set<User>();
     }
 
+    public async Task<User?> GetByIdAsync(Guid id)
+    {
+        return await _users.FirstOrDefaultAsync(x => x.Id == id);
+    }
+
     public async Task<IEnumerable<User>> GetUsersAsync()
     {
         return await _users

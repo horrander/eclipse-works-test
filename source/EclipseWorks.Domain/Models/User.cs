@@ -9,8 +9,11 @@ public class User : BaseModel
         Email = string.Empty;
     }
 
-    protected override void Validate()
+    public override void Validate()
     {
-        throw new NotImplementedException();
+        if (string.IsNullOrEmpty(Email))
+        {
+
+        }
     }
 }

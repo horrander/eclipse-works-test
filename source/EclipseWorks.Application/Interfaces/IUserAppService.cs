@@ -1,8 +1,8 @@
-using EclipseWorks.Domain.Models;
+using EclipseWorks.Application.Dtos.Response;
 
 namespace EclipseWorks.Application.Interfaces;
 
 public interface IUserAppService
 {
-    Task<IEnumerable<User>> GetUsersAsync();
+    Task<IEnumerable<UserResponse>> GetUsersAsync();
 }

@@ -1,16 +1,34 @@
 using EclipseWorks.Application;
 using EclipseWorks.DbAdapter;
 using EclipseWorks.Domain;
+using EclipseWorks.WebApi;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<ExceptionFilters>();
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddLogging(builder => builder.AddConsole());
+
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Eclipse Works - Projects Manager",
+        Version = "v1",
+    });
+
+    var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "EclipseWorks.WebApi.xml");
+    options.IncludeXmlComments(filePath);
+});
+
+builder.Services.AddLogging(builder => builder.ClearProviders().AddSimpleConsole());
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 //registering DI

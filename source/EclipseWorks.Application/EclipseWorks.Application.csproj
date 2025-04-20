@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos/Request/" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="../EclipseWorks.Domain/EclipseWorks.Domain.csproj" />
   </ItemGroup>
 

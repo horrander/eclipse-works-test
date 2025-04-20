@@ -9,5 +9,7 @@ public static class DomainDependencyInjection
     public static void AddDomain(this IServiceCollection services)
     {
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IProjectService, ProjectService>();
+        services.AddScoped<ITaskItemService, TaskItemService>();
     }
 }

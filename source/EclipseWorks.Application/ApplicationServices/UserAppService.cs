@@ -1,7 +1,7 @@
 using AutoMapper;
+using EclipseWorks.Application.Dtos.Response;
 using EclipseWorks.Application.Interfaces;
 using EclipseWorks.Domain.Interfaces.Services;
-using EclipseWorks.Domain.Models;
 using Microsoft.Extensions.Logging;
 
 namespace EclipseWorks.Application.ApplicationServices;
@@ -19,23 +19,19 @@ public class UserAppService : IUserAppService
         _userService = userService ??
             throw new ArgumentNullException(nameof(userService));
 
-        _mapper = mapper;
-        _logger = logger;
+        _mapper = mapper ??
+            throw new ArgumentNullException(nameof(mapper));
+
+        _logger = logger ??
+            throw new ArgumentNullException(nameof(logger));
     }
 
-    public async Task<IEnumerable<User>> GetUsersAsync()
+    public async Task<IEnumerable<UserResponse>> GetUsersAsync()
     {
-        try
-        {
-            var users = await _userService.GetUsersAsync();
+        var users = await _userService.GetUsersAsync();
 
-            var usersResponse = _mapper.Map<IEnumerable<User>>(users);
+        var usersResponse = _mapper.Map<IEnumerable<UserResponse>>(users);
 
-            return usersResponse;
-        }
-        catch (Exception)
-        {
-            throw;
-        }
+        return usersResponse;
     }
 }

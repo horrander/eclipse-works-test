@@ -1,6 +1,6 @@
 namespace EclipseWorks.Domain.Enuns;
 
-public enum StatusEnum
+public enum Status
 {
     Pending = 0,
     InProgress = 1,
