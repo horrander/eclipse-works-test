@@ -29,4 +29,10 @@ public interface IProjectService
     /// <param name="userId">User Id</param>
     /// <returns>List of projects</returns>
     Task<IEnumerable<Project>> GetByUserIdAsync(Guid userId);
+
+    /// <summary>
+    /// Remove a project
+    /// </summary>
+    /// <param name="projectId">Project Id</param>
+    Task RemoveAsync(Guid projectId);
 }

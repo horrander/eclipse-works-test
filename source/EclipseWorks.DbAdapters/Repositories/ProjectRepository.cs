@@ -53,8 +53,19 @@ public class ProjectRepository : IProjectRepository
             .ToListAsync();
     }
 
-    public Task Remove(Guid id)
+    public Task RemoveAsync(Project project)
     {
-        throw new NotImplementedException();
+        project.SetRemovedDate();
+
+        foreach (var task in project.Tasks)
+        {
+            task.SetRemovedDate();
+        }
+
+        _context.AttachRange(project.Tasks);
+
+        _projects.Update(project);
+
+        return _context.SaveChangesAsync();
     }
 }

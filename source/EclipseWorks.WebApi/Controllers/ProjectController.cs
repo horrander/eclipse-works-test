@@ -60,5 +60,22 @@ namespace EclipseWorks.WebApi.Controllers
 
             return Ok(projects);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <returns></returns> <summary>
+        /// 
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <returns></returns>
+        [HttpDelete("{projectId:Guid}")]
+        [ProducesResponseType(typeof(ProjectResponse), 200)]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> Delete(Guid projectId)
+        {
+
+        }
     }
 }

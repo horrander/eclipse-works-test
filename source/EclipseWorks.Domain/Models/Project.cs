@@ -70,4 +70,18 @@ public class Project : BaseModel
             throw new ProjectExceptions(ProjectExceptions.ProjectToManyTasksError);
         }
     }
+
+    /// <summary>
+    /// Validate if the task is in progress before remove a project
+    /// </summary>
+    public void ValidateTasksStatusBeforeRemove()
+    {
+        foreach (var task in Tasks)
+        {
+            if (task.Status == Enuns.Status.InProgress)
+            {
+                throw new ProjectExceptions(ProjectExceptions.ProjectRemoveTaskInProgressError);
+            }
+        }
+    }
 }

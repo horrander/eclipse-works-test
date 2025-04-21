@@ -10,4 +10,6 @@ public interface IProjectAppService
     Task<ProjectResponse> CreateAsync(CreateProjectRequest project);
 
     Task<IEnumerable<ProjectResponse>> GetByUserIdAsync(Guid userId);
+
+    Task RemoveAsync(Guid projectId);
 }

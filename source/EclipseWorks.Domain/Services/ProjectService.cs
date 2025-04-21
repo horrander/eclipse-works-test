@@ -76,4 +76,22 @@ public class ProjectService : IProjectService
 
         return projects;
     }
+
+    public async Task RemoveAsync(Guid projectId)
+    {
+        _logger.LogInformation("Removendo projeto com Id {}", projectId);
+
+        var project = await _projectRepository.GetByIdAsync(projectId);
+
+        if (project == null)
+        {
+            throw new ProjectExceptions(ProjectExceptions.ProjectNotFoundError);
+        }
+
+        _logger.LogInformation("Validando se o projeto possui tasks em andamento");
+
+        project.ValidateTasksStatusBeforeRemove();
+
+        await _projectRepository.RemoveAsync(project);
+    }
 }

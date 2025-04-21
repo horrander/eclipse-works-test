@@ -8,5 +8,5 @@ public interface IProjectRepository
     Task<Project> CreateAsync(Project project);
     Task<Project?> GetByIdAsync(Guid id);
     Task<IEnumerable<Project>?> GetByUserIdAsync(Guid userId);
-    Task Remove(Guid id);
+    Task RemoveAsync(Project project);
 }

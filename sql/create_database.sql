@@ -1,3 +1,7 @@
+CREATE DATABASE eclipseworks
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE TABLE public.users (
 	id uuid DEFAULT uuid_generate_v4() NOT NULL,
 	email varchar(100) NOT NULL,

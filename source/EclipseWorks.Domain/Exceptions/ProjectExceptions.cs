@@ -18,4 +18,7 @@ public class ProjectExceptions : BusinessException
 
     public static readonly BusinessError ProjectNotFoundForUserError =
         new("ProjectNotFoundForUserError", "Nenhum projeto encontrado para o usuário informado");
+
+    public static readonly BusinessError ProjectRemoveTaskInProgressError =
+        new("ProjectRemoveTaskInProgressError", "Não é possível remover um projeto com tarefas em progresso");
 }
