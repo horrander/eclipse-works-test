@@ -59,4 +59,9 @@ public class ProjectAppService : IProjectAppService
 
         return _mapper.Map<IEnumerable<ProjectResponse>>(projects);
     }
+
+    public async Task RemoveAsync(Guid projectId)
+    {
+        await _projectService.RemoveAsync(projectId);
+    }
 }

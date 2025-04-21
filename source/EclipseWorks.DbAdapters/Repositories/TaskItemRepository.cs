@@ -37,6 +37,19 @@ public class TaskItemRepository : ITaskItemRepository
             .ToListAsync();
     }
 
+    public async Task RemoveAllFromProjectAsync(IEnumerable<TaskItem> taskItems)
+    {
+        foreach (var task in taskItems)
+        {
+            task.SetRemovedDate();
+        }
+
+        //Todo: Implementar um bulk update se o número de tasks crescer. https://entityframework-extensions.net/bulk-update
+        _tasks.UpdateRange(taskItems);
+
+        await _context.SaveChangesAsync();
+    }
+
     public async Task RemoveFromProjectAsync(TaskItem taskItem)
     {
         taskItem.SetRemovedDate();

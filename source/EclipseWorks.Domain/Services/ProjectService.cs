@@ -9,13 +9,18 @@ namespace EclipseWorks.Domain.Services;
 public class ProjectService : IProjectService
 {
     private readonly IProjectRepository _projectRepository;
+    private readonly ITaskItemRepository _taskItemRepository;
     private readonly ILogger<ProjectService> _logger;
 
     public ProjectService(IProjectRepository projectRepository,
+        ITaskItemRepository taskItemRepository,
         ILogger<ProjectService> logger)
     {
         _projectRepository = projectRepository ??
             throw new ArgumentNullException(nameof(projectRepository));
+
+        _taskItemRepository = taskItemRepository ??
+            throw new ArgumentNullException(nameof(taskItemRepository));
 
         _logger = logger ??
             throw new ArgumentNullException(nameof(logger));
@@ -93,5 +98,9 @@ public class ProjectService : IProjectService
         project.ValidateTasksStatusBeforeRemove();
 
         await _projectRepository.RemoveAsync(project);
+
+        await _taskItemRepository.RemoveAllFromProjectAsync(project.Tasks);
+
+        _logger.LogInformation("Projeto e suas tasks removidos com sucesso");
     }
 }

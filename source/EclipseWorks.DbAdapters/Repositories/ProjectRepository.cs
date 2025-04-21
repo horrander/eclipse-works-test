@@ -57,13 +57,6 @@ public class ProjectRepository : IProjectRepository
     {
         project.SetRemovedDate();
 
-        foreach (var task in project.Tasks)
-        {
-            task.SetRemovedDate();
-        }
-
-        _context.AttachRange(project.Tasks);
-
         _projects.Update(project);
 
         return _context.SaveChangesAsync();

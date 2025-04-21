@@ -72,13 +72,13 @@ public class Project : BaseModel
     }
 
     /// <summary>
-    /// Validate if the task is in progress before remove a project
+    /// Validate if any task is in progress or pending before remove a project
     /// </summary>
     public void ValidateTasksStatusBeforeRemove()
     {
         foreach (var task in Tasks)
         {
-            if (task.Status == Enuns.Status.InProgress)
+            if (task.Status != Enuns.Status.Finish)
             {
                 throw new ProjectExceptions(ProjectExceptions.ProjectRemoveTaskInProgressError);
             }
