@@ -29,14 +29,14 @@ public interface ITaskItemService
     /// <summary>
     /// Remove a Task from a project
     /// </summary>
-    /// <param name="projectId">Project Id</param>
+    /// <param name="taskId">Project Id</param>
     /// <returns></returns>
-    Task RemoveFromProjectAsync(Guid projectId);
+    Task RemoveFromProjectAsync(Guid taskId);
 
     /// <summary>
     /// Get a sigle Task by Id
     /// </summary>
-    /// <param name="id">Task Id</param>
+    /// <param name="taskId">Task Id</param>
     /// <returns>Task</returns>
-    Task<TaskItem> GetById(Guid id);
+    Task<TaskItem> GetById(Guid taskId);
 }

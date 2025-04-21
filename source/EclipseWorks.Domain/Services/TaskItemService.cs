@@ -40,11 +40,11 @@ public class TaskItemService : ITaskItemService
         return task;
     }
 
-    public async Task<TaskItem> GetById(Guid id)
+    public async Task<TaskItem> GetById(Guid taskId)
     {
-        _logger.LogInformation("Obtendo a task com Id {}", id);
+        _logger.LogInformation("Obtendo a task com Id {}", taskId);
 
-        var taskItem = await _taskItemRepository.GetById(id);
+        var taskItem = await _taskItemRepository.GetById(taskId);
 
         if (taskItem == null)
         {
@@ -70,9 +70,15 @@ public class TaskItemService : ITaskItemService
         return tasks;
     }
 
-    public Task RemoveFromProjectAsync(Guid projectId)
+    public async Task RemoveFromProjectAsync(Guid taskId)
     {
-        throw new NotImplementedException();
+        _logger.LogInformation("Removendo task {}", taskId);
+
+        var task = await GetById(taskId);
+
+        await _taskItemRepository.RemoveFromProjectAsync(task);
+
+        _logger.LogInformation("Task removida com sucesso");
     }
 
     public async Task<TaskItem> UpdateAsync(TaskItem task)

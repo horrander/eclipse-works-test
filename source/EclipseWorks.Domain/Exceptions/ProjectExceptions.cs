@@ -15,4 +15,7 @@ public class ProjectExceptions : BusinessException
 
     public static readonly BusinessError ProjectNotFoundError =
         new("ProjectNotFoundError", "Projeto não encontrado");
+
+    public static readonly BusinessError ProjectNotFoundForUserError =
+        new("ProjectNotFoundForUserError", "Nenhum projeto encontrado para o usuário informado");
 }

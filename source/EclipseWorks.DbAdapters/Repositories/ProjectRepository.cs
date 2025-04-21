@@ -43,4 +43,18 @@ public class ProjectRepository : IProjectRepository
             .Include(x => x.Tasks)
             .FirstOrDefaultAsync(x => x.Id == id && x.RemovedAt == null);
     }
+
+    public async Task<IEnumerable<Project>?> GetByUserIdAsync(Guid userId)
+    {
+        return await _projects
+            .Include(x => x.User)
+            .Include(x => x.Tasks)
+            .Where(x => x.UserId == userId && x.RemovedAt == null)
+            .ToListAsync();
+    }
+
+    public Task Remove(Guid id)
+    {
+        throw new NotImplementedException();
+    }
 }

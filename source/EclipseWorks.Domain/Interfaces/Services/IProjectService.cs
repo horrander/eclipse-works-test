@@ -22,4 +22,11 @@ public interface IProjectService
     /// <param name="id">Project Id</param>
     /// <returns>Project</returns>
     Task<Project> GetByIdAsync(Guid id);
+
+    /// <summary>
+    /// Get all projects of a specific User
+    /// </summary>
+    /// <param name="userId">User Id</param>
+    /// <returns>List of projects</returns>
+    Task<IEnumerable<Project>> GetByUserIdAsync(Guid userId);
 }

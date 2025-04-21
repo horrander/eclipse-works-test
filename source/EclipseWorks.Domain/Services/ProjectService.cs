@@ -62,4 +62,18 @@ public class ProjectService : IProjectService
 
         return project;
     }
+
+    public async Task<IEnumerable<Project>> GetByUserIdAsync(Guid userId)
+    {
+        _logger.LogInformation("Obtendo dos os projetos do usuário {}", userId);
+
+        var projects = await _projectRepository.GetByUserIdAsync(userId);
+
+        if (projects == null || !projects.Any())
+        {
+            throw new ProjectExceptions(ProjectExceptions.ProjectNotFoundForUserError);
+        }
+
+        return projects;
+    }
 }

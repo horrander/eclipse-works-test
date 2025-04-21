@@ -62,8 +62,8 @@ public class TaskItemAppService : ITaskItemAppService
     {
         var taskItem = _mapper.Map<TaskItem>(taskRequest);
 
-        await _taskItemService.UpdateAsync(taskItem);
+        var updatedTak = await _taskItemService.UpdateAsync(taskItem);
 
-        return _mapper.Map<TaskItemResponse>(taskItem);
+        return _mapper.Map<TaskItemResponse>(updatedTak);
     }
 }

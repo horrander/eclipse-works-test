@@ -52,4 +52,11 @@ public class ProjectAppService : IProjectAppService
 
         return _mapper.Map<IEnumerable<ProjectResponse>>(projects);
     }
+
+    public async Task<IEnumerable<ProjectResponse>> GetByUserIdAsync(Guid userId)
+    {
+        var projects = await _projectService.GetByUserIdAsync(userId);
+
+        return _mapper.Map<IEnumerable<ProjectResponse>>(projects);
+    }
 }

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EclipseWorks.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/project")]
     [ApiController]
     public class ProjectController : ControllerBase
     {
@@ -41,9 +41,24 @@ namespace EclipseWorks.WebApi.Controllers
         [ProducesResponseType(400)]
         public async Task<IActionResult> GetAllProjects()
         {
-            var projectsResponse = await _projectAppService.GetAllAsync();
+            var projects = await _projectAppService.GetAllAsync();
 
-            return Ok(projectsResponse);
+            return Ok(projects);
+        }
+
+        /// <summary>
+        /// Get all projects by a user id
+        /// </summary>
+        /// <param name="userId">User Id</param>
+        /// <returns>List of projects</returns>
+        [HttpGet("{userId:Guid}")]
+        [ProducesResponseType(typeof(ProjectResponse), 200)]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> GetByUserId(Guid userId)
+        {
+            var projects = await _projectAppService.GetByUserIdAsync(userId);
+
+            return Ok(projects);
         }
     }
 }

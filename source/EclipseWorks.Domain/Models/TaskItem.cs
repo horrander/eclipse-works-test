@@ -27,7 +27,7 @@ public class TaskItem : BaseModel
             throw new TaskItemExceptions(TaskItemExceptions.TaskItemInvalidDueDateError);
         }
 
-        if (ProjectId == Guid.Empty)
+        if (Id != Guid.Empty && ProjectId == Guid.Empty)
         {
             throw new TaskItemExceptions(TaskItemExceptions.TaskItemInvalidProjectError);
         }
