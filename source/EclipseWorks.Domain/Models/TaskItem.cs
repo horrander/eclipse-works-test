@@ -12,13 +12,16 @@ public class TaskItem : BaseModel
     public Priority Priority { get; set; }
     public Guid ProjectId { get; set; }
     public IEnumerable<TaskComment>? Comments { get; set; }
+    public IList<Audit> Audits { get; set; }
 
     public TaskItem()
     {
         Title = "Nova Tarefa";
+        Description = string.Empty;
         Status = Status.Pending;
         DueDate = DateTime.Now.AddDays(30);
         Priority = Priority.Medium;
+        Audits = new List<Audit>();
     }
 
     public override void Validate()
@@ -40,9 +43,41 @@ public class TaskItem : BaseModel
     /// <param name="newTask">New Task</param>
     public void UpdateAllowedProperties(TaskItem newTask)
     {
-        Title = newTask.Title;
-        Description = newTask.Description;
-        DueDate = newTask.DueDate;
-        Status = newTask.Status;
+        if (Title != newTask.Title)
+        {
+            Audits.Add(new(nameof(Title),
+                Title,
+                newTask.Title,
+                Id));
+
+            Title = newTask.Title;
+        }
+        if (Description != newTask.Description)
+        {
+            Audits.Add(new(nameof(Description),
+                Description ?? string.Empty,
+                newTask.Description ?? string.Empty,
+                Id));
+
+            Description = newTask.Description;
+        }
+        if (DueDate != newTask.DueDate)
+        {
+            Audits.Add(new(nameof(DueDate),
+                DueDate?.ToLongDateString() ?? string.Empty,
+                newTask.DueDate?.ToLongDateString() ?? string.Empty,
+                Id));
+
+            DueDate = newTask.DueDate;
+        }
+        if (Status != newTask.Status)
+        {
+            Audits.Add(new(nameof(Status),
+                Status.ToString(),
+                newTask.Status.ToString(),
+                Id));
+
+            Status = newTask.Status;
+        }
     }
 }

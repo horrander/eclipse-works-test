@@ -28,13 +28,17 @@ public class TaskItemRepository : ITaskItemRepository
 
     public async Task<TaskItem?> GetByIdAsync(Guid id)
     {
-        return await _tasks.Include(x => x.Comments)
+        return await _tasks
+            .Include(x => x.Comments)
+            .Include(x => x.Audits)
             .FirstOrDefaultAsync(x => x.Id == id && x.RemovedAt == null);
     }
 
     public async Task<IEnumerable<TaskItem>> GetByProjectIdAsync(Guid projectId)
     {
-        return await _tasks.Include(x => x.Comments)
+        return await _tasks
+            .Include(x => x.Comments)
+            .Include(x => x.Audits)
             .Where(x => x.ProjectId == projectId && x.RemovedAt == null)
             .ToListAsync();
     }

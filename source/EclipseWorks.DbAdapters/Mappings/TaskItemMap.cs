@@ -44,5 +44,9 @@ public class TaskItemMap : BaseMap<TaskItem>, IEntityTypeConfiguration<TaskItem>
         builder.HasMany(x => x.Comments)
             .WithOne()
             .HasForeignKey(x => x.TaskItemId);
+
+        builder.HasMany(x => x.Audits)
+            .WithOne()
+            .HasForeignKey(x => x.TaskItemId);
     }
 }
