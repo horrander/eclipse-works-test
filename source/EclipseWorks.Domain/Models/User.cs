@@ -11,9 +11,6 @@ public class User : BaseModel
 
     public override void Validate()
     {
-        if (string.IsNullOrEmpty(Email))
-        {
-
-        }
+        return;
     }
 }
