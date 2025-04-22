@@ -1,4 +1,3 @@
-using System;
 using EclipseWorks.Domain.Models;
 
 namespace EclipseWorks.Domain.Interfaces.Repositories;

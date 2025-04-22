@@ -15,6 +15,20 @@ public class UserRepository : IUserRepository
              throw new ArgumentNullException(nameof(context));
 
         _users = _context.Set<User>();
+
+        if (!_context.Database.EnsureCreated())
+        {
+            _context.Database.MigrateAsync();
+
+            Create(new User("eclipseworks@email.com"));
+        }
+    }
+
+    private void Create(User user)
+    {
+        _users.Add(user);
+
+        _context.SaveChanges();
     }
 
     public async Task<User?> GetByIdAsync(Guid id)

@@ -9,6 +9,11 @@ public class User : BaseModel
         Email = string.Empty;
     }
 
+    public User(string email)
+    {
+        Email = email;
+    }
+
     public override void Validate()
     {
         return;
