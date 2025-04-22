@@ -18,6 +18,7 @@ public class AutoMapperProfile : Profile
         CreateMap<CreateProjectRequest, Project>();
         CreateMap<CreateTaskItemRequest, TaskItem>();
         CreateMap<UpdateTaskItemRequest, TaskItem>();
+        CreateMap<CreateTaskCommentRequest, TaskComment>();
     }
 
     private void CreateResponseMaps()
@@ -25,5 +26,6 @@ public class AutoMapperProfile : Profile
         CreateMap<User, UserResponse>();
         CreateMap<Project, ProjectResponse>();
         CreateMap<TaskItem, TaskItemResponse>();
+        CreateMap<TaskComment, TaskCommentResponse>();
     }
 }

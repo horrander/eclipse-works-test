@@ -35,3 +35,13 @@ CREATE TABLE public.tasks (
 	removed_at timestamp NULL,
 	CONSTRAINT tasks_pkey PRIMARY KEY (id)
 );
+
+CREATE TABLE public.task_comments (
+	id uuid DEFAULT uuid_generate_v4() NOT NULL,
+	"comment" varchar(500) NOT NULL,
+	user_id uuid NOT NULL,
+	task_id uuid NOT NULL,
+	created_at timestamp DEFAULT now() NOT NULL,
+	modified_at timestamp NULL,
+	removed_at timestamp NULL
+);

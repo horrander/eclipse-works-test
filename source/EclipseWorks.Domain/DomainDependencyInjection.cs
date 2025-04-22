@@ -11,5 +11,6 @@ public static class DomainDependencyInjection
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IProjectService, ProjectService>();
         services.AddScoped<ITaskItemService, TaskItemService>();
+        services.AddScoped<ITaskCommentService, TaskCommentService>();
     }
 }

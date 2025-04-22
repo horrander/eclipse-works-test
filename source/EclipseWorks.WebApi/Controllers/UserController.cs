@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EclipseWorks.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/user")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -16,6 +16,10 @@ namespace EclipseWorks.WebApi.Controllers
                 throw new ArgumentNullException(nameof(userAppService));
         }
 
+        /// <summary>
+        /// Get all users
+        /// </summary>
+        /// <returns>List of Users</returns> 
         [HttpGet]
         [ProducesResponseType(typeof(UserResponse), 200)]
         [ProducesResponseType(typeof(UserResponse), 400)]

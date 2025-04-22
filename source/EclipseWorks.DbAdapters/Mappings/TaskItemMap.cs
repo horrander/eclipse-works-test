@@ -40,5 +40,9 @@ public class TaskItemMap : BaseMap<TaskItem>, IEntityTypeConfiguration<TaskItem>
             .IsRequired()
             .HasColumnName("project_id")
             .HasColumnType("uuid");
+
+        builder.HasMany(x => x.Comments)
+            .WithOne()
+            .HasForeignKey(x => x.TaskItemId);
     }
 }

@@ -14,5 +14,5 @@ public interface ITaskItemRepository
 
     Task RemoveAllFromProjectAsync(IEnumerable<TaskItem> taskItems);
 
-    Task<TaskItem?> GetById(Guid id);
+    Task<TaskItem?> GetByIdAsync(Guid id);
 }

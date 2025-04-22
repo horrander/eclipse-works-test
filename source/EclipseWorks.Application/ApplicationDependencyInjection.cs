@@ -11,5 +11,6 @@ public static class ApplicationDependencyInjection
         services.AddScoped<IUserAppService, UserAppService>();
         services.AddScoped<IProjectAppService, ProjectAppService>();
         services.AddScoped<ITaskItemAppService, TaskItemAppService>();
+        services.AddScoped<ITaskCommentAppService, TaskCommentAppService>();
     }
 }

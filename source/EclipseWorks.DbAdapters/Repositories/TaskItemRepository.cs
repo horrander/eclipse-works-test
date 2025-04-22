@@ -26,14 +26,16 @@ public class TaskItemRepository : ITaskItemRepository
         return task;
     }
 
-    public async Task<TaskItem?> GetById(Guid id)
+    public async Task<TaskItem?> GetByIdAsync(Guid id)
     {
-        return await _tasks.FirstOrDefaultAsync(x => x.Id == id && x.RemovedAt == null);
+        return await _tasks.Include(x => x.Comments)
+            .FirstOrDefaultAsync(x => x.Id == id && x.RemovedAt == null);
     }
 
     public async Task<IEnumerable<TaskItem>> GetByProjectIdAsync(Guid projectId)
     {
-        return await _tasks.Where(x => x.ProjectId == projectId && x.RemovedAt == null)
+        return await _tasks.Include(x => x.Comments)
+            .Where(x => x.ProjectId == projectId && x.RemovedAt == null)
             .ToListAsync();
     }
 

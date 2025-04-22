@@ -44,7 +44,7 @@ public class TaskItemService : ITaskItemService
     {
         _logger.LogInformation("Obtendo a task com Id {}", taskId);
 
-        var taskItem = await _taskItemRepository.GetById(taskId);
+        var taskItem = await _taskItemRepository.GetByIdAsync(taskId);
 
         if (taskItem == null)
         {
@@ -87,12 +87,10 @@ public class TaskItemService : ITaskItemService
 
         ArgumentNullException.ThrowIfNull(task);
 
-        var atualTask = await _taskItemRepository.GetById(task.Id);
+        var atualTask = await _taskItemRepository.GetByIdAsync(task.Id);
 
         if (atualTask == null)
         {
-            _logger.LogError("Task não foi encontrada para ser atualizada");
-
             throw new TaskItemExceptions(TaskItemExceptions.TaskItemNotFoundError);
         }
 

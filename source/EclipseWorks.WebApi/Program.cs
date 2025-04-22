@@ -6,14 +6,11 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<ExceptionFilters>();
 });
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(options =>
@@ -28,7 +25,7 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(filePath);
 });
 
-builder.Services.AddLogging(builder => builder.ClearProviders().AddSimpleConsole());
+builder.Services.AddLogging(builder => builder.ClearProviders().AddConsole());
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 //registering DI

@@ -11,6 +11,7 @@ public class TaskItem : BaseModel
     public Status Status { get; set; }
     public Priority Priority { get; set; }
     public Guid ProjectId { get; set; }
+    public IEnumerable<TaskComment>? Comments { get; set; }
 
     public TaskItem()
     {

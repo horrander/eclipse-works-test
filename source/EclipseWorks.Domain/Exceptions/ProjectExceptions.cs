@@ -20,5 +20,5 @@ public class ProjectExceptions : BusinessException
         new("ProjectNotFoundForUserError", "Nenhum projeto encontrado para o usuário informado");
 
     public static readonly BusinessError ProjectRemoveTaskInProgressError =
-        new("ProjectRemoveTaskInProgressError", "Não é possível remover um projeto com tarefas em progresso");
+        new("ProjectRemoveTaskInProgressError", "Não é possível remover um projeto com tarefas em progresso, conclua ou remova as tarefas pendentes.");
 }
