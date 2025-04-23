@@ -15,8 +15,6 @@ public class UserRepository : IUserRepository
              throw new ArgumentNullException(nameof(context));
 
         _users = _context.Set<User>();
-
-
     }
 
     private void Create(User user)
@@ -35,8 +33,6 @@ public class UserRepository : IUserRepository
     {
         if (_context.Database.EnsureCreated())
         {
-            _context.Database.Migrate();
-
             Create(new User("eclipseworks@email.com"));
         }
 
