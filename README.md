@@ -16,7 +16,7 @@ Pré requisitos par execução: Docker ou Postman, Git, terminal (bash, powershe
 
 - Clonar o projeto:
   - git clone https://github.com/horrander/eclipse-works-test.git
-- Navegar até a raiz do projeto
+- Navegue até a raiz do projeto
   - cd eclipse-works-test
 - Buildar as imagens e criar os containers Docker
   - Utilizar a ferramenta [docker-compose](https://docs.docker.com/compose/)
