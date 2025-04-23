@@ -1,9 +1,9 @@
 # Teste Eclipse Works .Net
 
-Teste técnico para vaga de desenvolvedor de software .NET, criação do api para gerenciamento de projetos.
+Teste técnico para vaga de desenvolvedor de software .NET, criação de api para gerenciamento de projetos.
 
-Candidato: Horrander Maikel Barbosa Santana ()
-Definições utilizadas: https://meteor-ocelot-f0d.notion.site/NET-C-5281edbec2e4480d98552e5ca0242c5b
+- Candidato: [Horrander Maikel Barbosa Santana](https://www.linkedin.com/in/horrander/)
+- Definições utilizadas: https://meteor-ocelot-f0d.notion.site/NET-C-5281edbec2e4480d98552e5ca0242c5b
 
 ## Fase 1: Api Coding
 
@@ -11,15 +11,15 @@ Definições utilizadas: https://meteor-ocelot-f0d.notion.site/NET-C-5281edbec2e
 
 **Códido Fonte**: [Github](https://github.com/horrander/eclipse-works-test)
 
-**Tecnologias utilizadas**: .Net, Postgresql, Docker
-**Pré requisitos par execução**: Docker ou Postman, Git, terminal (bash, powershell)
+<p>Tecnologias utilizadas: .Net, Postgresql, Docker<br>
+Pré requisitos par execução: Docker ou Postman, Git, terminal (bash, powershell)</p>
 
 - Clonar o projeto:
   - git clone https://github.com/horrander/eclipse-works-test.git
 - Navegar até a raiz do projeto
   - cd eclipse-works-test
 - Buildar as imagens e criar os containers Docker
-  - Utilizar a ferramente [docker-compose](https://docs.docker.com/compose/)
+  - Utilizar a ferramenta [docker-compose](https://docs.docker.com/compose/)
   - Verificar através do comando _docker ps -a_ se já existe algum container em execução utilizando as portas _5432_ ou _8080_, caso exista pare os containers com _docker stop nome-container_
   - Executar no terminal _docker-compose up -d_ (_-d detached_ é opcional) para iniciar o processo de build da imagem
   - Aguardar o download das imagens (Docker Hub), build e criação dos containers
@@ -37,7 +37,7 @@ Definições utilizadas: https://meteor-ocelot-f0d.notion.site/NET-C-5281edbec2e
 
 - Como será realizado a criação de novos usuários, visto que não há um CRUD para isso.
 - Teremos níves de acesso diferentes para cada tipo de usuário, se sim, quais?
-- Teremos opções de upload de arquivos para os projetos? Se sim, o time de tecnologia precisa pensar onde, como e por quanto tempo serão armazenados estes arquivos, isso teria grande impacto financeiro, de segurança e de performance.
+- Teremos opções de upload de arquivos para os projetos? Se sim, o time de tecnologia precisa pensar onde, como e por quanto tempo serão armazenados estes arquivos, isso teria grande impacto financeiro, na segurança e de performance.
 - Por quanto tempo os dados precisam ser arquivados após a exclusão?
 - Atualmente é feito apenas uma exclusão lógica dos itens, podemos realizar uma exclusão física? (Para o caso de não ser necessário manter os itens excluidos)
 
