@@ -16,12 +16,7 @@ public class UserRepository : IUserRepository
 
         _users = _context.Set<User>();
 
-        if (!_context.Database.EnsureCreated())
-        {
-            _context.Database.MigrateAsync();
 
-            Create(new User("eclipseworks@email.com"));
-        }
     }
 
     private void Create(User user)
@@ -38,6 +33,13 @@ public class UserRepository : IUserRepository
 
     public async Task<IEnumerable<User>> GetUsersAsync()
     {
+        if (_context.Database.EnsureCreated())
+        {
+            _context.Database.Migrate();
+
+            Create(new User("eclipseworks@email.com"));
+        }
+
         return await _users
             .Where(x => x.RemovedAt == null)
             .ToListAsync();
