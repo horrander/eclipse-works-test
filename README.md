@@ -15,9 +15,10 @@ Teste técnico para vaga de desenvolvedor de software .NET, criação de api par
 Pré requisitos par execução: Docker ou Postman, Git, terminal (bash, powershell)</p>
 
 - Clonar o projeto:
-  - git clone https://github.com/horrander/eclipse-works-test.git
+  - git clone https://github.com/horrander/eclipse-works-test.git  
 - Navegue até a raiz do projeto
   - cd eclipse-works-test
+  - O projeto possui dois branches, main e develop, os dois estão atualizados, utilize o que preferir.
 - Buildar as imagens e criar os containers Docker
   - Utilizar a ferramenta [docker-compose](https://docs.docker.com/compose/)
   - Verificar através do comando _docker ps -a_ se já existe algum container em execução utilizando as portas _5432_ ou _8080_, caso exista pare os containers com _docker stop nome-container_
