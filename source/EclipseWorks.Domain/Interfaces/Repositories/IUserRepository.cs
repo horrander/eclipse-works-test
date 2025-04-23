@@ -1,4 +1,3 @@
-using System;
 using EclipseWorks.Domain.Models;
 
 namespace EclipseWorks.Domain.Interfaces.Repositories;
@@ -9,5 +8,12 @@ public interface IUserRepository
     /// Get all non-removed Users
     /// </summary>
     /// <returns>List of user</returns> 
-    IEnumerable<User> GetUsers();
+    Task<IEnumerable<User>> GetUsersAsync();
+
+    /// <summary>
+    /// Get a user by Id
+    /// </summary>
+    /// <param name="id">User Id</param>
+    /// <returns>User</returns>
+    Task<User?> GetByIdAsync(Guid id);
 }

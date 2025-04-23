@@ -17,9 +17,27 @@ public class UserRepository : IUserRepository
         _users = _context.Set<User>();
     }
 
-    public IEnumerable<User> GetUsers()
+    private void Create(User user)
     {
-        return _users
-            .Where(x => x.RemovedAt == null);
+        _users.Add(user);
+
+        _context.SaveChanges();
+    }
+
+    public async Task<User?> GetByIdAsync(Guid id)
+    {
+        return await _users.FirstOrDefaultAsync(x => x.Id == id);
+    }
+
+    public async Task<IEnumerable<User>> GetUsersAsync()
+    {
+        if (_context.Database.EnsureCreated())
+        {
+            Create(new User("eclipseworks@email.com"));
+        }
+
+        return await _users
+            .Where(x => x.RemovedAt == null)
+            .ToListAsync();
     }
 }

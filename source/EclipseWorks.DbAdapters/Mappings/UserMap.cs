@@ -10,8 +10,10 @@ public class UserMap : BaseMap<User>, IEntityTypeConfiguration<User>
     {
         ConfigureBaseMap(builder);
 
-        builder.ToTable("User");
+        builder.ToTable("users");
 
-        builder.Property(x => x.Email);
+        builder.Property(x => x.Email)
+            .HasColumnType("varchar(100)")
+            .HasColumnName("email");
     }
 }
